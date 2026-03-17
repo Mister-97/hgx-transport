@@ -222,11 +222,14 @@ nav{
 
 /* Marketplace pills */
 .mp-bar{
-  display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:18px;
+  display:flex;align-items:center;gap:10px;flex-wrap:nowrap;margin-top:18px;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  padding-bottom:4px;scrollbar-width:none;
 }
-.mp-label{color:rgba(255,255,255,.4);font-size:.75rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.mp-bar::-webkit-scrollbar{display:none}
+.mp-label{color:rgba(255,255,255,.4);font-size:.75rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;flex-shrink:0}
 .mp-pill{
-  display:flex;align-items:center;gap:6px;
+  display:flex;align-items:center;gap:6px;flex-shrink:0;
   background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
   color:rgba(255,255,255,.75);padding:5px 13px;border-radius:4px;
   font-size:.78rem;font-weight:600;transition:all .2s;
