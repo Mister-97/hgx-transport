@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>HGX Transport — Premium Appliances, Delivered</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1a2d5a;
+  --navy2:#0f1d38;
+  --green:#3bb83b;
+  --green2:#2ea02e;
+  --orange:#f5a623;
+  --white:#ffffff;
+  --gray:#f4f7f9;
+  --gray2:#e8ecf0;
+  --text:#1a2230;
+  --muted:#5a6880;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--text);background:#fff;overflow-x:hidden}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5%;height:72px;
+  background:rgba(255,255,255,.95);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(0,0,0,.06);
+  transition:box-shadow .3s;
+}
+nav.scrolled{box-shadow:0 2px 24px rgba(0,0,0,.1)}
+.nav-logo img{height:48px;object-fit:contain}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{text-decoration:none;color:var(--navy);font-weight:500;font-size:.95rem;transition:color .2s}
+.nav-links a:hover{color:var(--green)}
+.nav-cta{
+  background:var(--green);color:#fff;
+  padding:10px 24px;border-radius:8px;font-weight:700;font-size:.9rem;
+  text-decoration:none;transition:background .2s,transform .15s;
+  white-space:nowrap;
+}
+.nav-cta:hover{background:var(--green2);transform:translateY(-1px)}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.nav-burger span{display:block;width:24px;height:2px;background:var(--navy);border-radius:2px;transition:.3s}
+
+/* ─── HERO ─── */
+.hero{
+  min-height:100vh;
+  background:linear-gradient(135deg,var(--navy2) 0%,var(--navy) 50%,#1e3a6e 100%);
+  display:flex;align-items:center;padding:100px 5% 60px;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 70% 50%,rgba(59,184,59,.12) 0%,transparent 60%),
+             radial-gradient(ellipse at 20% 80%,rgba(245,166,35,.08) 0%,transparent 50%);
+}
+.hero-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:60px;align-items:center;max-width:1280px;margin:0 auto;width:100%;position:relative;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(59,184,59,.15);border:1px solid rgba(59,184,59,.35);
+  color:#7ef47e;padding:6px 16px;border-radius:100px;font-size:.82rem;font-weight:600;
+  margin-bottom:20px;
+}
+.hero-badge .dot{width:7px;height:7px;background:#3bb83b;border-radius:50%;animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+.hero h1{
+  font-size:clamp(2.2rem,4.5vw,3.8rem);
+  font-weight:900;color:#fff;line-height:1.1;
+  margin-bottom:22px;letter-spacing:-.02em;
+}
+.hero h1 span{color:var(--green)}
+.hero-sub{
+  font-size:1.1rem;color:rgba(255,255,255,.72);
+  line-height:1.7;margin-bottom:36px;max-width:480px;
+}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px}
+.btn-primary{
+  background:var(--green);color:#fff;padding:14px 32px;
+  border-radius:10px;font-weight:700;font-size:1rem;
+  text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:8px;
+}
+.btn-primary:hover{background:var(--green2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(59,184,59,.4)}
+.btn-outline{
+  background:transparent;color:#fff;padding:14px 32px;
+  border:2px solid rgba(255,255,255,.3);border-radius:10px;font-weight:600;font-size:1rem;
+  text-decoration:none;transition:all .2s;
+}
+.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.hero-marketplaces{
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+}
+.hero-marketplaces span{color:rgba(255,255,255,.5);font-size:.82rem;font-weight:500}
+.mp-pill{
+  display:flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);
+  color:rgba(255,255,255,.85);padding:5px 12px;border-radius:100px;
+  font-size:.78rem;font-weight:600;cursor:pointer;transition:all .2s;text-decoration:none;
+}
+.mp-pill:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.3);color:#fff}
+.mp-pill .mp-dot{width:8px;height:8px;border-radius:50%}
+.fb-dot{background:#1877f2}
+.ou-dot{background:#ff6500}
+.eb-dot{background:#e53238}
+
+/* Hero visual */
+.hero-visual{position:relative;display:flex;justify-content:center;align-items:center}
+.truck-card{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:24px;padding:32px;width:100%;
+  backdrop-filter:blur(20px);position:relative;overflow:hidden;
+}
+.truck-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(59,184,59,.08),transparent 60%);
+  pointer-events:none;
+}
+.appliance-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px;
+}
+.apl-card{
+  background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.1);
+  border-radius:14px;padding:16px;display:flex;flex-direction:column;
+  align-items:flex-start;gap:6px;transition:all .3s;cursor:pointer;
+  animation:floatCard 4s ease-in-out infinite;
+}
+.apl-card:nth-child(2){animation-delay:.5s}
+.apl-card:nth-child(3){animation-delay:1s}
+.apl-card:nth-child(4){animation-delay:1.5s}
+@keyframes floatCard{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.apl-card:hover{background:rgba(255,255,255,.14);border-color:rgba(59,184,59,.4)}
+.apl-icon{font-size:1.8rem}
+.apl-name{color:rgba(255,255,255,.9);font-weight:600;font-size:.85rem}
+.apl-price{color:var(--green);font-weight:800;font-size:.9rem}
+.apl-orig{color:rgba(255,255,255,.35);font-size:.75rem;text-decoration:line-through}
+.hero-delivery-bar{
+  background:rgba(59,184,59,.15);border:1px solid rgba(59,184,59,.25);
+  border-radius:10px;padding:14px 18px;
+  display:flex;align-items:center;gap:12px;
+}
+.hero-delivery-bar .truck-icon{font-size:1.4rem}
+.hero-delivery-bar p{color:rgba(255,255,255,.85);font-size:.85rem;font-weight:600}
+.hero-delivery-bar p small{display:block;color:rgba(255,255,255,.5);font-weight:400;font-size:.75rem;margin-top:2px}
+.savings-badge{
+  position:absolute;top:-14px;right:24px;
+  background:var(--orange);color:#fff;
+  padding:6px 14px;border-radius:100px;font-weight:800;font-size:.82rem;
+  box-shadow:0 4px 16px rgba(245,166,35,.5);
+}
+
+/* ─── SECTION COMMON ─── */
+section{padding:80px 5%}
+.section-tag{
+  display:inline-block;background:rgba(59,184,59,.1);color:var(--green2);
+  padding:4px 14px;border-radius:100px;font-size:.78rem;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px;
+}
+.section-title{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;color:var(--navy);line-height:1.15;letter-spacing:-.02em}
+.section-sub{color:var(--muted);font-size:1.05rem;line-height:1.7;margin-top:12px;max-width:560px}
+.section-head{margin-bottom:52px}
+.section-head.center{text-align:center}
+.section-head.center .section-sub{margin:12px auto 0}
+
+/* ─── HOW TO BUY ─── */
+.buy-section{background:var(--gray)}
+.buy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.buy-card{
+  background:#fff;border-radius:18px;padding:28px 24px;
+  border:2px solid var(--gray2);
+  transition:all .3s;cursor:pointer;text-decoration:none;color:inherit;
+  display:flex;flex-direction:column;align-items:flex-start;gap:14px;
+}
+.buy-card:hover{border-color:var(--green);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.1)}
+.buy-card.featured{border-color:var(--green);background:linear-gradient(135deg,#f0faf0,#fff)}
+.buy-icon-wrap{
+  width:56px;height:56px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;font-size:1.6rem;
+  flex-shrink:0;
+}
+.direct-icon{background:linear-gradient(135deg,var(--navy),#2a4a8a)}
+.fb-icon{background:#1877f2}
+.ou-icon{background:#ff6500}
+.eb-icon{background:#e53238}
+.buy-card h3{font-size:1.1rem;font-weight:800;color:var(--navy)}
+.buy-card p{font-size:.9rem;color:var(--muted);line-height:1.6}
+.buy-card-tag{
+  background:var(--green);color:#fff;
+  padding:3px 10px;border-radius:100px;font-size:.72rem;font-weight:700;
+}
+
+/* ─── APPLIANCES ─── */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:20px}
+.cat-card{
+  background:var(--gray);border-radius:16px;padding:24px 16px;
+  text-align:center;transition:all .3s;cursor:pointer;border:2px solid transparent;
+}
+.cat-card:hover{background:#fff;border-color:var(--green);box-shadow:0 8px 30px rgba(0,0,0,.08);transform:translateY(-3px)}
+.cat-emoji{font-size:2.4rem;margin-bottom:10px}
+.cat-card h4{font-weight:700;font-size:.95rem;color:var(--navy);margin-bottom:4px}
+.cat-card p{font-size:.8rem;color:var(--muted)}
+.cat-card .save{font-size:.78rem;color:var(--green);font-weight:700;margin-top:6px}
+
+/* ─── FEATURED LISTINGS ─── */
+.listings-section{background:var(--gray)}
+.listings-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
+.listing-card{
+  background:#fff;border-radius:18px;overflow:hidden;
+  border:1px solid var(--gray2);transition:all .3s;
+}
+.listing-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,.12)}
+.listing-img{
+  height:180px;background:linear-gradient(135deg,var(--gray),var(--gray2));
+  display:flex;align-items:center;justify-content:center;font-size:4rem;
+  position:relative;
+}
+.badge-save{
+  position:absolute;top:12px;left:12px;
+  background:var(--orange);color:#fff;
+  padding:4px 10px;border-radius:100px;font-size:.72rem;font-weight:800;
+}
+.badge-new{
+  position:absolute;top:12px;right:12px;
+  background:var(--navy);color:#fff;
+  padding:4px 10px;border-radius:100px;font-size:.72rem;font-weight:700;
+}
+.listing-body{padding:18px}
+.listing-brand{font-size:.75rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.listing-name{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:8px;line-height:1.3}
+.listing-prices{display:flex;align-items:baseline;gap:8px;margin-bottom:12px}
+.listing-price{font-size:1.3rem;font-weight:900;color:var(--green)}
+.listing-orig{font-size:.88rem;color:var(--muted);text-decoration:line-through}
+.listing-actions{display:flex;gap:8px}
+.btn-buy-direct{
+  flex:1;background:var(--green);color:#fff;border:none;
+  padding:10px;border-radius:8px;font-weight:700;font-size:.85rem;cursor:pointer;
+  transition:background .2s;
+}
+.btn-buy-direct:hover{background:var(--green2)}
+.btn-buy-more{
+  background:var(--gray);color:var(--navy);border:none;
+  padding:10px 14px;border-radius:8px;font-weight:600;font-size:.8rem;cursor:pointer;
+  transition:background .2s;white-space:nowrap;
+}
+.btn-buy-more:hover{background:var(--gray2)}
+.listing-platforms{
+  display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;
+}
+.plat-tag{
+  font-size:.7rem;font-weight:600;color:var(--muted);
+  background:var(--gray);border-radius:100px;padding:3px 8px;
+}
+
+/* ─── WHY HGX ─── */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px}
+.why-card{
+  background:#fff;border-radius:18px;padding:30px 24px;
+  border:1px solid var(--gray2);
+  display:flex;flex-direction:column;gap:14px;
+}
+.why-icon{
+  width:52px;height:52px;border-radius:14px;
+  background:linear-gradient(135deg,var(--green),var(--green2));
+  display:flex;align-items:center;justify-content:center;font-size:1.4rem;
+  flex-shrink:0;
+}
+.why-card h3{font-size:1.05rem;font-weight:800;color:var(--navy)}
+.why-card p{font-size:.9rem;color:var(--muted);line-height:1.6}
+
+/* ─── DELIVERY BAND ─── */
+.delivery-section{
+  background:linear-gradient(135deg,var(--navy2),var(--navy));
+  padding:80px 5%;position:relative;overflow:hidden;
+}
+.delivery-section::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 80% 50%,rgba(59,184,59,.15),transparent 60%);
+}
+.delivery-inner{
+  max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+  position:relative;
+}
+.delivery-inner .section-title{color:#fff}
+.delivery-inner .section-sub{color:rgba(255,255,255,.65)}
+.delivery-steps{display:flex;flex-direction:column;gap:20px;margin-top:32px}
+.d-step{
+  display:flex;align-items:flex-start;gap:16px;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
+  border-radius:14px;padding:18px;
+}
+.d-num{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--green);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:.85rem;flex-shrink:0;
+}
+.d-step h4{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:4px}
+.d-step p{font-size:.85rem;color:rgba(255,255,255,.55);line-height:1.5}
+.delivery-visual{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  border-radius:24px;padding:32px;text-align:center;
+}
+.truck-big{font-size:6rem;margin-bottom:16px;display:block;animation:truckRoll 3s ease-in-out infinite}
+@keyframes truckRoll{0%,100%{transform:translateX(0)}25%{transform:translateX(8px)}75%{transform:translateX(-8px)}}
+.delivery-visual h3{color:#fff;font-size:1.4rem;font-weight:800;margin-bottom:8px}
+.delivery-visual p{color:rgba(255,255,255,.55);font-size:.9rem;line-height:1.6}
+.coverage-chips{
+  display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:20px;
+}
+.chip{
+  background:rgba(59,184,59,.15);border:1px solid rgba(59,184,59,.3);
+  color:#7ef47e;padding:5px 14px;border-radius:100px;font-size:.78rem;font-weight:600;
+}
+
+/* ─── MARKETPLACE CTA ─── */
+.mp-section{background:var(--gray);padding:80px 5%}
+.mp-inner{max-width:800px;margin:0 auto;text-align:center}
+.mp-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-top:40px}
+.mp-card{
+  background:#fff;border-radius:18px;padding:28px 20px;
+  border:2px solid var(--gray2);text-align:center;
+  transition:all .3s;text-decoration:none;display:block;
+}
+.mp-card:hover{border-color:currentColor;transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.1)}
+.mp-card.fb{color:#1877f2}
+.mp-card.ou{color:#ff6500}
+.mp-card.eb{color:#e53238}
+.mp-logo{font-size:2.4rem;margin-bottom:10px}
+.mp-card h4{font-weight:800;font-size:1rem;color:var(--navy)}
+.mp-card p{font-size:.82rem;color:var(--muted);margin-top:4px}
+.mp-card .find-us{
+  display:inline-block;margin-top:12px;font-size:.78rem;font-weight:700;
+  padding:6px 16px;border-radius:100px;border:1.5px solid currentColor;
+  transition:all .2s;
+}
+.mp-card:hover .find-us{background:currentColor;color:#fff}
+
+/* ─── TESTIMONIALS ─── */
+.testimonials-section{padding:80px 5%}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.testi-card{
+  background:var(--gray);border-radius:18px;padding:28px 24px;
+  border:1px solid var(--gray2);
+}
+.stars{color:var(--orange);font-size:.9rem;margin-bottom:14px;letter-spacing:2px}
+.testi-text{font-size:.95rem;color:var(--text);line-height:1.7;font-style:italic;margin-bottom:18px}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-avatar{
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:.9rem;color:#fff;
+  flex-shrink:0;
+}
+.testi-author h5{font-weight:700;font-size:.88rem;color:var(--navy)}
+.testi-author p{font-size:.78rem;color:var(--muted)}
+.testi-platform{
+  font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:100px;
+  display:inline-block;margin-top:2px;
+}
+
+/* ─── STATS BAND ─── */
+.stats-band{
+  background:linear-gradient(90deg,var(--green) 0%,var(--green2) 100%);
+  padding:48px 5%;
+}
+.stats-inner{
+  max-width:1000px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;
+}
+.stat{text-align:center}
+.stat-num{font-size:2.4rem;font-weight:900;color:#fff;line-height:1}
+.stat-label{font-size:.88rem;color:rgba(255,255,255,.8);font-weight:500;margin-top:6px}
+
+/* ─── CONTACT ─── */
+.contact-section{background:var(--gray);padding:80px 5%}
+.contact-inner{max-width:600px;margin:0 auto}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+.form-full{grid-column:1/-1}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group label{font-size:.85rem;font-weight:600;color:var(--navy)}
+.form-group input,.form-group select,.form-group textarea{
+  border:2px solid var(--gray2);border-radius:10px;
+  padding:12px 16px;font-size:.95rem;font-family:inherit;
+  background:#fff;color:var(--text);outline:none;
+  transition:border-color .2s;
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--green)}
+.form-group textarea{resize:vertical;min-height:120px}
+.form-submit{
+  width:100%;background:var(--green);color:#fff;
+  padding:14px;border:none;border-radius:10px;
+  font-size:1rem;font-weight:800;cursor:pointer;
+  transition:all .2s;margin-top:8px;
+}
+.form-submit:hover{background:var(--green2);transform:translateY(-1px)}
+
+/* ─── FOOTER ─── */
+footer{
+  background:var(--navy2);color:rgba(255,255,255,.7);
+  padding:56px 5% 28px;
+}
+.footer-inner{
+  max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;
+  margin-bottom:40px;
+}
+.footer-brand img{height:52px;margin-bottom:16px}
+.footer-brand p{font-size:.88rem;line-height:1.7;color:rgba(255,255,255,.5);max-width:280px}
+.footer-col h5{font-size:.88rem;font-weight:700;color:#fff;margin-bottom:16px;letter-spacing:.04em;text-transform:uppercase}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col ul a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.88rem;transition:color .2s}
+.footer-col ul a:hover{color:#fff}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.08);
+  padding-top:24px;
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:.82rem;flex-wrap:wrap;gap:12px;
+}
+.footer-socials{display:flex;gap:12px}
+.footer-socials a{
+  width:36px;height:36px;border-radius:8px;
+  background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;font-size:1rem;transition:all .2s;
+}
+.footer-socials a:hover{background:var(--green);color:#fff}
+
+/* ─── REVEAL ANIMATIONS ─── */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.active{opacity:1;transform:none}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .7s ease,transform .7s ease}
+.reveal-left.active{opacity:1;transform:none}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .7s ease,transform .7s ease}
+.reveal-right.active{opacity:1;transform:none}
+.stagger .reveal:nth-child(1){transition-delay:.05s}
+.stagger .reveal:nth-child(2){transition-delay:.15s}
+.stagger .reveal:nth-child(3){transition-delay:.25s}
+.stagger .reveal:nth-child(4){transition-delay:.35s}
+.stagger .reveal:nth-child(5){transition-delay:.45s}
+.stagger .reveal:nth-child(6){transition-delay:.55s}
+
+/* ─── MOBILE NAV ─── */
+.mobile-nav{
+  display:none;position:fixed;top:72px;left:0;right:0;z-index:99;
+  background:#fff;padding:20px 5%;
+  flex-direction:column;gap:16px;
+  border-bottom:1px solid var(--gray2);
+  box-shadow:0 12px 32px rgba(0,0,0,.1);
+}
+.mobile-nav.open{display:flex}
+.mobile-nav a{color:var(--navy);font-weight:600;text-decoration:none;font-size:1rem;padding:4px 0}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+  .hero-grid,.delivery-inner{grid-template-columns:1fr}
+  .hero-visual{display:none}
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .nav-links,.nav-cta{display:none}
+  .nav-burger{display:flex}
+}
+@media(max-width:600px){
+  .form-grid{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo"><img src="logo.png" alt="HGX Transport"/></a>
+  <ul class="nav-links">
+    <li><a href="#appliances">Appliances</a></li>
+    <li><a href="#delivery">Delivery</a></li>
+    <li><a href="#buy-options">Where to Buy</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get a Quote</a>
+  <button class="nav-burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="#appliances" onclick="closeMobile()">Appliances</a>
+  <a href="#delivery" onclick="closeMobile()">Delivery</a>
+  <a href="#buy-options" onclick="closeMobile()">Where to Buy</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <a href="#contact" class="nav-cta" onclick="closeMobile()">Get a Quote</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-badge"><span class="dot"></span> Serving the Greater Area</div>
+      <h1>Brand-Name Appliances.<br/><span>Warehouse Prices.</span><br/>Door-to-Door Delivery.</h1>
+      <p class="hero-sub">HGX Transport sources premium appliances directly — washers, dryers, fridges, stoves & more — and delivers them to your door with our own fleet. No middleman. No markup. Just savings.</p>
+      <div class="hero-btns">
+        <a href="#appliances" class="btn-primary">🏠 Browse Appliances</a>
+        <a href="#delivery" class="btn-outline">🚚 How Delivery Works</a>
+      </div>
+      <div class="hero-marketplaces">
+        <span>Also find us on:</span>
+        <a href="#buy-options" class="mp-pill"><span class="mp-dot fb-dot"></span> Facebook Marketplace</a>
+        <a href="#buy-options" class="mp-pill"><span class="mp-dot ou-dot"></span> OfferUp</a>
+        <a href="#buy-options" class="mp-pill"><span class="mp-dot eb-dot"></span> eBay</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="truck-card">
+        <div class="savings-badge">🔥 Up to 60% Off</div>
+        <div class="appliance-grid">
+          <div class="apl-card">
+            <div class="apl-icon">🫧</div>
+            <div class="apl-name">Washer/Dryer</div>
+            <div class="apl-price">$349</div>
+            <div class="apl-orig">$899 retail</div>
+          </div>
+          <div class="apl-card">
+            <div class="apl-icon">🧊</div>
+            <div class="apl-name">Refrigerator</div>
+            <div class="apl-price">$449</div>
+            <div class="apl-orig">$1,100 retail</div>
+          </div>
+          <div class="apl-card">
+            <div class="apl-icon">🔥</div>
+            <div class="apl-name">Gas Range</div>
+            <div class="apl-price">$299</div>
+            <div class="apl-orig">$750 retail</div>
+          </div>
+          <div class="apl-card">
+            <div class="apl-icon">🍽️</div>
+            <div class="apl-name">Dishwasher</div>
+            <div class="apl-price">$189</div>
+            <div class="apl-orig">$480 retail</div>
+          </div>
+        </div>
+        <div class="hero-delivery-bar">
+          <span class="truck-icon">🚚</span>
+          <p>Free delivery available on all orders
+            <small>Our trucks. Our team. Delivered safely.</small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<div class="stats-band">
+  <div class="stats-inner">
+    <div class="stat reveal"><div class="stat-num">500+</div><div class="stat-label">Appliances Sold</div></div>
+    <div class="stat reveal"><div class="stat-num">60%</div><div class="stat-label">Average Savings</div></div>
+    <div class="stat reveal"><div class="stat-num">3</div><div class="stat-label">Delivery Platforms</div></div>
+    <div class="stat reveal"><div class="stat-num">★ 4.9</div><div class="stat-label">Customer Rating</div></div>
+  </div>
+</div>
+
+<!-- HOW TO BUY -->
+<section id="buy-options" class="buy-section">
+  <div class="section-head">
+    <div class="section-tag">Where to Buy</div>
+    <h2 class="section-title">Shop Your Way</h2>
+    <p class="section-sub">Buy directly from us or find our listings on the marketplace you already use. Same great prices, same reliable delivery.</p>
+  </div>
+  <div class="buy-grid stagger">
+    <a href="#contact" class="buy-card featured reveal">
+      <div class="buy-icon-wrap direct-icon">🏠</div>
+      <div>
+        <div class="buy-card-tag">Best Deals</div>
+        <h3>Buy Direct</h3>
+        <p>Lowest prices guaranteed. Contact us directly for the biggest savings, custom requests, and bundled delivery deals.</p>
+      </div>
+    </a>
+    <a href="#" class="buy-card reveal">
+      <div class="buy-icon-wrap fb-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </div>
+      <h3>Facebook Marketplace</h3>
+      <p>Find our listings on Facebook Marketplace. Message us directly through the platform to arrange purchase and delivery.</p>
+    </a>
+    <a href="#" class="buy-card reveal">
+      <div class="buy-icon-wrap ou-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="10"/><text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#ff6500">OU</text></svg>
+      </div>
+      <h3>OfferUp</h3>
+      <p>Browse our OfferUp storefront for great local deals. Negotiate, buy, and we'll deliver straight to you.</p>
+    </a>
+    <a href="#" class="buy-card reveal">
+      <div class="buy-icon-wrap eb-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M3.684 9.412c-.19-.63-.057-1.098.38-1.413.437-.315 1.01-.365 1.72-.148l4.77 1.508 3.29-4.478c.43-.584.924-.85 1.485-.797.56.053.986.38 1.278.978l5.04 10.296c.247.507.27 1.005.07 1.493a1.59 1.59 0 0 1-1.128.924l-14.33 3.61c-.66.166-1.212.04-1.658-.378-.446-.418-.56-.98-.342-1.686L3.684 9.412z"/></svg>
+      </div>
+      <h3>eBay</h3>
+      <p>Shop our eBay store for verified listings with buyer protection. Bid or buy-it-now on hundreds of appliances.</p>
+    </a>
+  </div>
+</section>
+
+<!-- APPLIANCE CATEGORIES -->
+<section id="appliances">
+  <div class="section-head">
+    <div class="section-tag">What We Sell</div>
+    <h2 class="section-title">All Major Appliance Categories</h2>
+    <p class="section-sub">We carry top brands including Samsung, LG, Whirlpool, GE, Maytag, Bosch & more — at warehouse prices.</p>
+  </div>
+  <div class="cat-grid stagger">
+    <div class="cat-card reveal"><div class="cat-emoji">🫧</div><h4>Washers</h4><p>Top & front load</p><div class="save">Save up to 55%</div></div>
+    <div class="cat-card reveal"><div class="cat-emoji">💨</div><h4>Dryers</h4><p>Gas & electric</p><div class="save">Save up to 50%</div></div>
+    <div class="cat-card reveal"><div class="cat-emoji">🧊</div><h4>Refrigerators</h4><p>French door, side-by-side</p><div class="save">Save up to 60%</div></div>
+    <div class="cat-card reveal"><div class="cat-emoji">🔥</div><h4>Ranges & Stoves</h4><p>Gas, electric & induction</p><div class="save">Save up to 50%</div></div>
+    <div class="cat-card reveal"><div class="cat-emoji">🍽️</div><h4>Dishwashers</h4><p>Built-in & portable</p><div class="save">Save up to 45%</div></div>
+    <div class="cat-card reveal"><div class="cat-emoji">🌡️</div><h4>Microwaves</h4><p>Over-range & countertop</p><div class="save">Save up to 40%</div></div>
+    <div class="cat-card reveal"><div class="cat-emoji">❄️</div><h4>Freezers</h4><p>Chest & upright</p><div class="save">Save up to 45%</div></div>
+    <div class="cat-card reveal"><div class="cat-emoji">🌀</div><h4>A/C & HVAC</h4><p>Window & portable units</p><div class="save">Save up to 40%</div></div>
+  </div>
+</section>
+
+<!-- FEATURED LISTINGS -->
+<section class="listings-section">
+  <div class="section-head center">
+    <div class="section-tag">Hot Deals</div>
+    <h2 class="section-title">Featured Listings</h2>
+    <p class="section-sub">Hand-picked deals updated regularly. All include delivery.</p>
+  </div>
+  <div class="listings-grid stagger">
+    <div class="listing-card reveal">
+      <div class="listing-img">🫧<div class="badge-save">Save $420</div></div>
+      <div class="listing-body">
+        <div class="listing-brand">Samsung</div>
+        <div class="listing-name">4.5 cu ft High-Efficiency Front Load Washer</div>
+        <div class="listing-prices">
+          <span class="listing-price">$479</span>
+          <span class="listing-orig">$899</span>
+        </div>
+        <div class="listing-actions">
+          <button class="btn-buy-direct" onclick="document.getElementById('contactForm').scrollIntoView({behavior:'smooth'})">Buy Direct</button>
+          <button class="btn-buy-more">+ Platforms</button>
+        </div>
+        <div class="listing-platforms">
+          <span class="plat-tag">FB Marketplace</span>
+          <span class="plat-tag">OfferUp</span>
+          <span class="plat-tag">eBay</span>
+        </div>
+      </div>
+    </div>
+    <div class="listing-card reveal">
+      <div class="listing-img">🧊<div class="badge-save">Save $550</div><div class="badge-new">🔥 Hot</div></div>
+      <div class="listing-body">
+        <div class="listing-brand">LG</div>
+        <div class="listing-name">28 cu ft French Door Refrigerator with Ice Maker</div>
+        <div class="listing-prices">
+          <span class="listing-price">$649</span>
+          <span class="listing-orig">$1,199</span>
+        </div>
+        <div class="listing-actions">
+          <button class="btn-buy-direct" onclick="document.getElementById('contactForm').scrollIntoView({behavior:'smooth'})">Buy Direct</button>
+          <button class="btn-buy-more">+ Platforms</button>
+        </div>
+        <div class="listing-platforms">
+          <span class="plat-tag">FB Marketplace</span>
+          <span class="plat-tag">eBay</span>
+        </div>
+      </div>
+    </div>
+    <div class="listing-card reveal">
+      <div class="listing-img">🔥<div class="badge-save">Save $310</div></div>
+      <div class="listing-body">
+        <div class="listing-brand">Whirlpool</div>
+        <div class="listing-name">5-Burner Freestanding Gas Range with Convection Oven</div>
+        <div class="listing-prices">
+          <span class="listing-price">$389</span>
+          <span class="listing-orig">$699</span>
+        </div>
+        <div class="listing-actions">
+          <button class="btn-buy-direct" onclick="document.getElementById('contactForm').scrollIntoView({behavior:'smooth'})">Buy Direct</button>
+          <button class="btn-buy-more">+ Platforms</button>
+        </div>
+        <div class="listing-platforms">
+          <span class="plat-tag">FB Marketplace</span>
+          <span class="plat-tag">OfferUp</span>
+        </div>
+      </div>
+    </div>
+    <div class="listing-card reveal">
+      <div class="listing-img">💨<div class="badge-save">Save $280</div><div class="badge-new">Pair Deal</div></div>
+      <div class="listing-body">
+        <div class="listing-brand">Maytag</div>
+        <div class="listing-name">Electric Dryer 7.4 cu ft — pairs with Maytag Washer set</div>
+        <div class="listing-prices">
+          <span class="listing-price">$319</span>
+          <span class="listing-orig">$599</span>
+        </div>
+        <div class="listing-actions">
+          <button class="btn-buy-direct" onclick="document.getElementById('contactForm').scrollIntoView({behavior:'smooth'})">Buy Direct</button>
+          <button class="btn-buy-more">+ Platforms</button>
+        </div>
+        <div class="listing-platforms">
+          <span class="plat-tag">FB Marketplace</span>
+          <span class="plat-tag">OfferUp</span>
+          <span class="plat-tag">eBay</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY HGX -->
+<section>
+  <div class="section-head center">
+    <div class="section-tag">Why HGX</div>
+    <h2 class="section-title">The HGX Difference</h2>
+    <p class="section-sub">We're not a big box store. We're local, fast, and obsessed with getting you the best deal.</p>
+  </div>
+  <div class="why-grid stagger">
+    <div class="why-card reveal">
+      <div class="why-icon">💰</div>
+      <h3>Warehouse Prices</h3>
+      <p>We source directly and cut out the retail markup. You pay what the warehouse pays — not what the showroom charges.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">🚚</div>
+      <h3>Our Own Fleet</h3>
+      <p>We don't outsource to third-party shippers. Our trucks, our team — so your appliance arrives safely and on time.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">📱</div>
+      <h3>Buy Anywhere</h3>
+      <p>Shop on Facebook Marketplace, OfferUp, eBay, or directly with us — same prices, same great service, wherever you prefer.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">⚡</div>
+      <h3>Fast Turnaround</h3>
+      <p>Most orders are delivered within 1–3 days. No waiting weeks like traditional retailers or dealing with shipping damage.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">✅</div>
+      <h3>Inspected & Ready</h3>
+      <p>Every appliance is inspected before delivery. We carry scratch-and-dent, refurbished, and new units — all clearly labeled.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">🤝</div>
+      <h3>Local & Trusted</h3>
+      <p>We're a local company built on word-of-mouth. Real people, real accountability. Your satisfaction is our reputation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERY SECTION -->
+<section id="delivery" class="delivery-section">
+  <div class="delivery-inner">
+    <div>
+      <div class="section-tag" style="background:rgba(59,184,59,.2);color:#7ef47e">Delivery</div>
+      <h2 class="section-title reveal-left">We Bring It<br/>Right to You</h2>
+      <p class="section-sub reveal-left">Our delivery crew handles everything — load, transport, unload, and placement. All with our own trucks so nothing gets lost in the shuffle.</p>
+      <div class="delivery-steps">
+        <div class="d-step reveal-left">
+          <div class="d-num">1</div>
+          <div><h4>Choose Your Appliance</h4><p>Browse our inventory online or message us directly with what you need.</p></div>
+        </div>
+        <div class="d-step reveal-left">
+          <div class="d-num">2</div>
+          <div><h4>Confirm & Schedule</h4><p>We confirm availability, finalize your price, and lock in a delivery window that works for you.</p></div>
+        </div>
+        <div class="d-step reveal-left">
+          <div class="d-num">3</div>
+          <div><h4>We Deliver</h4><p>Our crew arrives on time, handles your appliance with care, and places it exactly where you need it.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="delivery-visual reveal-right">
+      <span class="truck-big">🚚</span>
+      <h3>Same-Area Delivery</h3>
+      <p>We deliver locally and to surrounding areas. Contact us to confirm coverage in your location.</p>
+      <div class="coverage-chips">
+        <span class="chip">Local Delivery</span>
+        <span class="chip">Flatbed Fleet</span>
+        <span class="chip">Careful Handling</span>
+        <span class="chip">On-Time</span>
+        <span class="chip">Team Carries In</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETPLACE CTA -->
+<section class="mp-section">
+  <div class="mp-inner">
+    <div class="section-tag">Find Us Everywhere</div>
+    <h2 class="section-title reveal">Our Listings Are on the Platforms You Love</h2>
+    <p class="section-sub reveal" style="margin:12px auto 0">Don't have our number? Find HGX Transport on these major resale platforms — same inventory, same great prices.</p>
+    <div class="mp-cards stagger">
+      <a href="#" class="mp-card fb reveal">
+        <div class="mp-logo">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="#1877f2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </div>
+        <h4>Facebook Marketplace</h4>
+        <p>Message us directly & arrange pickup or delivery</p>
+        <span class="find-us">Find Our Listings →</span>
+      </a>
+      <a href="#" class="mp-card ou reveal">
+        <div class="mp-logo">🟠</div>
+        <h4>OfferUp</h4>
+        <p>Browse, offer, and get local delivery</p>
+        <span class="find-us">Find Our Listings →</span>
+      </a>
+      <a href="#" class="mp-card eb reveal">
+        <div class="mp-logo">
+          <svg width="40" height="16" viewBox="0 0 100 40"><text x="0" y="32" font-size="36" font-weight="900" letter-spacing="-2"><tspan fill="#e53238">e</tspan><tspan fill="#0064d2">b</tspan><tspan fill="#f5af02">a</tspan><tspan fill="#86b817">y</tspan></text></svg>
+        </div>
+        <h4>eBay</h4>
+        <p>Bid or buy-it-now with buyer protection</p>
+        <span class="find-us">Find Our Listings →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="section-head center">
+    <div class="section-tag">Reviews</div>
+    <h2 class="section-title">What Our Customers Say</h2>
+  </div>
+  <div class="testi-grid stagger">
+    <div class="testi-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"Found them on Facebook Marketplace and honestly couldn't believe the price. The washer was in perfect condition and they delivered within 2 days. These guys are legit."</p>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background:#1a2d5a">M</div>
+        <div>
+          <h5>Marcus T.</h5>
+          <p>Purchased a Washer/Dryer set</p>
+          <span class="testi-platform" style="background:#e7f0ff;color:#1877f2">Facebook Marketplace</span>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"Bought a Samsung fridge through OfferUp. They were responsive, professional, and brought it right into my kitchen. Saved over $400 vs Best Buy. Will buy again."</p>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background:#3bb83b">J</div>
+        <div>
+          <h5>Jennifer R.</h5>
+          <p>Purchased a French Door Fridge</p>
+          <span class="testi-platform" style="background:#fff2e8;color:#ff6500">OfferUp</span>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"Used HGX twice now. First a gas range, then a dishwasher. Both times the delivery crew was careful, on time, and super friendly. Best appliance experience I've had."</p>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background:#f5a623">D</div>
+        <div>
+          <h5>David K.</h5>
+          <p>Purchased via Direct Contact</p>
+          <span class="testi-platform" style="background:#f0faf0;color:#2ea02e">Direct Purchase</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="contact-inner">
+    <div class="section-head center">
+      <div class="section-tag">Contact</div>
+      <h2 class="section-title reveal">Get a Quote or Ask About Inventory</h2>
+      <p class="section-sub reveal" style="margin:12px auto 0">Tell us what you need and we'll get back to you fast with pricing, availability, and a delivery quote.</p>
+    </div>
+    <form id="contactForm" onsubmit="handleSubmit(event)">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="Marcus" required/>
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Johnson" required/>
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="(555) 000-0000" required/>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="you@email.com"/>
+        </div>
+        <div class="form-group form-full">
+          <label>What appliance are you looking for?</label>
+          <select>
+            <option value="">Select a category...</option>
+            <option>Washer</option>
+            <option>Dryer</option>
+            <option>Washer/Dryer Set</option>
+            <option>Refrigerator</option>
+            <option>Range / Stove</option>
+            <option>Dishwasher</option>
+            <option>Microwave</option>
+            <option>Freezer</option>
+            <option>A/C Unit</option>
+            <option>Other / Multiple</option>
+          </select>
+        </div>
+        <div class="form-group form-full">
+          <label>Where did you find us? (optional)</label>
+          <select>
+            <option value="">Select...</option>
+            <option>Facebook Marketplace</option>
+            <option>OfferUp</option>
+            <option>eBay</option>
+            <option>Word of Mouth</option>
+            <option>Google Search</option>
+            <option>This Website</option>
+          </select>
+        </div>
+        <div class="form-group form-full">
+          <label>Message / Details</label>
+          <textarea placeholder="Tell us the brand, model, size, or any other details about what you're looking for..."></textarea>
+        </div>
+      </div>
+      <button type="submit" class="form-submit">🚚 Send My Request</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="logo.png" alt="HGX Transport"/>
+      <p>Premium appliances at warehouse prices, delivered to your door with our own fleet. Find us online or contact us directly.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Shop</h5>
+      <ul>
+        <li><a href="#appliances">Washers & Dryers</a></li>
+        <li><a href="#appliances">Refrigerators</a></li>
+        <li><a href="#appliances">Ranges & Stoves</a></li>
+        <li><a href="#appliances">Dishwashers</a></li>
+        <li><a href="#appliances">All Appliances</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Buy Online</h5>
+      <ul>
+        <li><a href="#">Facebook Marketplace</a></li>
+        <li><a href="#">OfferUp</a></li>
+        <li><a href="#">eBay</a></li>
+        <li><a href="#contact">Direct Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#delivery">How Delivery Works</a></li>
+        <li><a href="#contact">Get a Quote</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 HGX Transport. All rights reserved.</p>
+    <div class="footer-socials">
+      <a href="#" title="Facebook">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="#" title="Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─── NAV SCROLL
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>20)
+})
+
+// ─── MOBILE MENU
+document.getElementById('burger').addEventListener('click',()=>{
+  document.getElementById('mobileNav').classList.toggle('open')
+})
+function closeMobile(){document.getElementById('mobileNav').classList.remove('open')}
+
+// ─── REVEAL ANIMATIONS
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('active')
+      observer.unobserve(e.target)
+    }
+  })
+},{threshold:.12,rootMargin:'0px 0px -40px 0px'})
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>observer.observe(el))
+
+// ─── COUNT UP STATS
+const countObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const nums=e.target.querySelectorAll('.stat-num')
+      nums.forEach(el=>{
+        const text=el.textContent
+        const num=parseInt(text.replace(/[^0-9]/g,''))
+        if(isNaN(num))return
+        const prefix=text.match(/^[^0-9]*/)[0]
+        const suffix=text.match(/[^0-9]*$/)[0]
+        let cur=0
+        const dur=1200
+        const step=num/60
+        const t=setInterval(()=>{
+          cur=Math.min(cur+step,num)
+          el.textContent=prefix+Math.round(cur)+suffix
+          if(cur>=num)clearInterval(t)
+        },dur/60)
+      })
+      countObserver.unobserve(e.target)
+    }
+  })
+},{threshold:.5})
+document.querySelectorAll('.stats-band').forEach(el=>countObserver.observe(el))
+
+// ─── FORM SUBMIT
+function handleSubmit(e){
+  e.preventDefault()
+  const btn=e.target.querySelector('.form-submit')
+  btn.textContent='✅ Request Sent! We\'ll be in touch soon.'
+  btn.style.background='var(--navy)'
+  btn.disabled=true
+}
+</script>
+</body>
+</html>
